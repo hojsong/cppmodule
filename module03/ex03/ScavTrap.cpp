@@ -29,18 +29,6 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &claptrap){
 	return *this;
 }
 
-void ScavTrap::guardGate(void){
-	if (this->Hit_points == 0)
-		std::cout<< "ScavTrap "<< this->Name << " is Die. Can't Gate Guard Mode." << std::endl;
-	else if (this->Energy_points == 0)
-		std::cout<< "ScavTrap "<< this->Name << " is 0 Energy. Can't Gate Guard Mode." << std::endl;
-	else
-	{
-		std::cout << "ScavTrap " << this->Name << " is Success Gate Guard Mode." << std::endl;
-		this->Energy_points--;
-	}
-}
-
 void ScavTrap::attack(const std::string &target){
 	if (this->Hit_points > 0)
 	{
@@ -52,30 +40,15 @@ void ScavTrap::attack(const std::string &target){
 	}
 }
 
-void ScavTrap::takeDamage(unsigned int amount){
-	if (this->Hit_points > 0)
+void ScavTrap::guardGate(void){
+	if (this->Hit_points == 0)
+		std::cout<< "ScavTrap "<< this->Name << " is Die. Can't Gate Guard Mode." << std::endl;
+	else if (this->Energy_points == 0)
+		std::cout<< "ScavTrap "<< this->Name << " is 0 Energy. Can't Gate Guard Mode." << std::endl;
+	else
 	{
-		std::cout<< "ScavTrap "<< this->Name <<" is take " <<amount <<" Point Damage." << std::endl;
-		this->Hit_points -= amount;
-	}
-	if (this->Hit_points <= 0)
-		std::cout<< "ScavTrap "<< this->Name <<" is Die."<< std::endl;
-}
-
-void ScavTrap::beRepaired(unsigned int amount){
-	if ((unsigned int)this->Energy_points >= amount && this->Hit_points > 0)
-	{
-		this->Energy_points -= amount;
-		this->Hit_points += amount;
-		std::cout<< "ScavTrap "<<this->Name<<" is Repaired " <<amount <<" Point." << std::endl;
-	}
-	else if (this->Hit_points <= 0)
-	{
-		std::cout<< "ScavTrap "<<this->Name<<" is Die. Can Not Repaired" << std::endl;
-	}
-	else if ((unsigned int)this->Energy_points < amount)
-	{
-		std::cout<< "ScavTrap "<<this->Name<<" is not enough Energy." << std::endl;
+		std::cout << "ScavTrap " << this->Name << " is Success Gate Guard Mode." << std::endl;
+		this->Energy_points--;
 	}
 }
 
