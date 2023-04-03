@@ -6,7 +6,7 @@
 #    By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:08:09 by hojsong           #+#    #+#              #
-#    Updated: 2023/04/04 08:08:29 by hojsong          ###   ########.fr        #
+#    Updated: 2023/04/04 08:27:02 by hojsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
 NAME = Animal
 HEAD = ./
-SRCS = Cat.cpp main.cpp Dog.cpp Animal.cpp
+SRCS = Cat.cpp main.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
