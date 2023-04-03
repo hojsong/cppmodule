@@ -10,13 +10,13 @@ Cat::Cat(const Cat &obj){
     *this = obj;
 }
 Cat& Cat::operator=(const Cat &obj){
-	std::cout << "Cat Assignation operator called" << std::endl;
+	std::cout << "Cat Assignation operator calleßßßßßd" << std::endl;
     if (this->type == obj.type)
         return (*this);
     this->type = obj.type;
     return (*this);
 }
-Cat::~Cat(void){
+Cat::~Cat(){
     std::cout << "Cat Constructor Destroy called" << std::endl;
 }
 

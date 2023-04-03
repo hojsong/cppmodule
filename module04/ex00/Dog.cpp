@@ -16,7 +16,7 @@ Dog& Dog::operator=(const Dog &obj){
     this->type = obj.type;
     return (*this);
 }
-Dog::~Dog(void){
+Dog::~Dog(){
     std::cout << "Dog Constructor Destroy called" << std::endl;
 }
 

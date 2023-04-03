@@ -17,7 +17,7 @@ Animal& Animal::operator=(const Animal &obj){
     return (*this);
 }
 
-Animal::~Animal(void){
+Animal::~Animal(){
     std::cout << "Animal Constructor Destroy called" << std::endl;
 }
 
