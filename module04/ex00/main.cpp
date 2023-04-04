@@ -26,5 +26,6 @@ int main()
     delete w;
     delete z;
 
+    system("leaks Animal");
     return 0;
 }
