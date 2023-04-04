@@ -40,6 +40,5 @@ int main()
 	std::cout << cat.getter() << std::endl;
 	std::cout << dog.getter() << std::endl;
     
-    system("leaks Animal");
 	return 0;
 }

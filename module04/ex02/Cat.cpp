@@ -40,3 +40,7 @@ void Cat::setter(std::string str, int idx){
 std::string Cat::getter(void){
     return (br->getter());
 }
+
+std::string Cat::getType(void) const{
+    return (this->type);
+}
