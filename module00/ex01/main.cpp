@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojsong <hojsong@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 13:13:02 by hojsong           #+#    #+#             */
-/*   Updated: 2023/02/28 13:13:10 by hojsong          ###   ########.fr       */
+/*   Updated: 2023/04/06 19:30:47 by hojsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,50 @@ void	Phonebookprint(std::string str);
 
 class Phonebook
 {
-private:
-	std::string FirstName;
-	std::string LastName;
-	std::string NickName;
-	std::string Phonenum;
-	std::string DarkestSercret;
-public:
-	void initPhonebook();
-	void printPhonebook();
-	~Phonebook();
+	private: 
+		std::string FirstName;
+		std::string LastName;
+		std::string NickName;
+		std::string Phonenum;
+		std::string DarkestSercret;
+	public:
+		void initPhonebook();
+		void printPhonebook();
+		~Phonebook();
 };
 
 void	Phonebook::initPhonebook()
 {
 	std::cout << "Firstname : ";
-	std::cin >> FirstName;
+	std::getline(std::cin, FirstName);
 	std::cout << "LastName : ";
-	std::cin >> LastName;
+	std::getline(std::cin, LastName);
 	std::cout << "NickName : ";
-    std::cin >> NickName;
+    std::getline(std::cin, NickName);
     std::cout << "Phonenum : ";
-	std::cin >> Phonenum;
+	std::getline(std::cin, Phonenum);
 	std::cout << "DarkestSercret : ";
-	std::cin >> DarkestSercret;
+	std::getline(std::cin, DarkestSercret);
 }
 
 void	Phonebook::printPhonebook()
 {
+	unsigned long	i;
+	
+	if (FirstName.length() < 10)
+		for (i = 0; i < 10 - FirstName.length(); i++)
+			std::cout << " ";
 	Phonebookprint(FirstName);
 	std::cout << " | ";
+	if (LastName.length() < 10)
+		for (i = 0; i < 10 - LastName.length(); i++)
+			std::cout << " ";
 	Phonebookprint(LastName);
    	std::cout << " | ";
+	if (NickName.length() < 10)
+		for (i = 0; i < 10 - NickName.length(); i++)
+			std::cout << " ";
     Phonebookprint(NickName);
-    std::cout << " | ";
-    Phonebookprint(Phonenum);
     std::cout << std::endl;
 }
 
@@ -70,6 +79,41 @@ void	Phonebookprint(std::string str)
 
 Phonebook::~Phonebook()
 {
+
+}
+
+void print_book(Phonebook *book, int i){
+	int	idx;
+	int	num;
+
+	idx = 0;
+	std::cout << "index |  FirstName |   LastName |   NickName" << std::endl;
+	while (idx < i && idx < 8)
+	{
+		std::cout << "    " << idx + 1 << " | ";
+		book[idx].Phonebook::printPhonebook();
+		idx++;
+	}
+	while (1)
+	{
+		std::cout << "What Find Index Number : ";
+		std::cin >> num;
+		if (std::cin fail()){
+			std::cin.clear();
+			std::cin.ignore();
+			std::cout << "Wrong input" << std::endl;
+		}
+		else if(num > 8 || num < 1){
+			std::cin.clear();
+			std::cin.ignore();
+			std::cout << "Out of NUM : num is 1 ~ 8" << std::endl;	
+		}
+		else
+			break;
+	}
+	std::cin.ignore();
+	Phonebookprint(book[num - 1].)
+	
 }
 
 int	main(void)
@@ -82,33 +126,25 @@ int	main(void)
 	i = 0;
 	while(1)
 	{
-		std::cin >> input;
+		std::cout << "Command List : ADD , SEARCH , EXIT" << std::endl;
+		std::cout << "Command : ";
+		std::getline(std::cin, input);
 		if (input == "ADD")
 		{
-			if (i == 8)
+			if (i >= 8)
 			{
-				idx = -1;
-				while (++idx < 7)
-					book[idx] = book[idx + 1];
-				book[i - 1].Phonebook::~Phonebook();
-				book[i - 1].Phonebook::initPhonebook();
+				book[i % 8].Phonebook::~Phonebook();
+				book[i % 8].Phonebook::initPhonebook();
 			}
 			else
-			{
 				book[i].Phonebook::initPhonebook();
-				i++;
-			}
+			i++;
 		}
-		if (input == "SEARCH")
+		else if (input == "SEARCH")
 		{
-    		idx = 0;
-			while (idx < i)
-			{
-				book[idx].Phonebook::printPhonebook();
-				idx++;
-			}
+			print_book(book, i);
 		}
-		if (input == "EXIT")
+		else if (input == "EXIT")
 		{
 			idx = 0;
 			while (idx < i)
@@ -119,7 +155,10 @@ int	main(void)
 			return (0);
 		}
 		else
+		{
+			std::cout << input << " : command not found" << std::endl;
 			continue;
+		}
 	}
 	return (0);
 }
