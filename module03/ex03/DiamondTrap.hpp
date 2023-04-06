@@ -1,3 +1,6 @@
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
+
 #include <iostream>
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
@@ -14,3 +17,5 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		void Status(void);
 		~DiamondTrap();	
 };
+
+#endif

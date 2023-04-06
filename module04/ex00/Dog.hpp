@@ -1,3 +1,6 @@
+#ifndef DOG_HPP
+# define DOG_HPP
+
 #include "Animal.hpp"
 
 class Dog : public Animal{
@@ -8,3 +11,5 @@ class Dog : public Animal{
 	    virtual ~Dog();
 	    virtual void makeSound(void) const;
 };
+
+#endif

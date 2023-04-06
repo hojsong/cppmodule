@@ -1,3 +1,6 @@
+#ifndef CAT_HPP
+# define CAT_HPP
+
 #include "Animal.hpp"
 
 class Cat : public Animal{
@@ -14,3 +17,5 @@ class Cat : public Animal{
 		std::string getter(void);
 	    virtual std::string getType(void) const;
 };
+
+#endif

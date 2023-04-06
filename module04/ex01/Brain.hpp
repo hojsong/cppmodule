@@ -1,3 +1,6 @@
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
+
 #include <iostream>
 
 class Brain{
@@ -10,3 +13,5 @@ class Brain{
 		void setter(std::string str, int idx);
 		std::string getter(void);
 };
+
+#endif
