@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hojsong <hojsong@student.42seoul.k>        +#+  +:+       +#+         #
+#    By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:08:09 by hojsong           #+#    #+#              #
-#    Updated: 2023/02/28 13:08:16 by hojsong          ###   ########.fr        #
+#    Updated: 2023/04/07 12:47:09 by hojsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
 NAME = PhoneBook
-SRCS = main.cpp
+SRCS = main.cpp Phonebook.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
