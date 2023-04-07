@@ -12,9 +12,9 @@
 
 CC = c++
 CXXFLAG = -Wall -Wextra -Werror -std=c++98 -g
-NAME = Animal
+NAME = Character
 HEAD = ./
-SRCS = Cat.cpp main.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS = Character.cpp MateriaSource.cpp Cure.cpp Ice.cpp main.cpp AMateria.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)

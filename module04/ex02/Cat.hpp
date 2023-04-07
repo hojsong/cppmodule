@@ -15,6 +15,7 @@ class Cat : public Animal{
 	    virtual void makeSound(void) const;
 		void setter(std::string str, int idx);
 		std::string getter(void);
+	    virtual std::string getType(void) const;
 };
 
 #endif

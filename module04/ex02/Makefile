@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = c++
-CXXFLAG = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAG = -Wall -Wextra -Werror -std=c++98
 NAME = Animal
 HEAD = ./
 SRCS = Cat.cpp main.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp

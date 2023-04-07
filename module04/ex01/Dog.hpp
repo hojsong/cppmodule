@@ -1,3 +1,6 @@
+#ifndef DOG_HPP
+# define DOG_HPP
+
 #include "Animal.hpp"
 
 class Dog : public Animal{
@@ -13,3 +16,5 @@ class Dog : public Animal{
 		void setter(std::string str, int idx);
 		std::string getter(void);
 };
+
+#endif
