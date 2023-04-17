@@ -30,7 +30,7 @@ void Phonebook::print_book(){
 			std::cin.ignore();
 			std::cout << "Wrong input" << std::endl;
 		}
-		else if(num > 0 && num < 8 && num > idx){
+		else if(idx < 8 && (num < 1 || num > idx)){
 			std::cin.clear();
 			std::cin.ignore();
 			std::cout << "Out of NUM : num is 1 ~ "<< idx << std::endl;	

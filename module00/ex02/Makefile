@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hojsong <hojsong@student.42seoul.k>        +#+  +:+       +#+         #
+#    By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/28 13:08:09 by hojsong           #+#    #+#              #
-#    Updated: 2023/02/28 13:08:16 by hojsong          ###   ########.fr        #
+#    Updated: 2023/04/17 16:06:05 by hojsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ $(NAME) : $(OBJS)
 
 clean :
 	rm -rf *.o
+	rm *_log.txt
 
 fclean : clean
 	rm -rf $(NAME)

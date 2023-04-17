@@ -10,56 +10,75 @@ Contact::~Contact(){
 
 void	Contact::initcontact()
 {
-	std::cout << "Firstname : ";
-	std::getline(std::cin, FirstName);
-	if (std::cin.eof()){
-		std::cout << "\nEOF input : EXIT"<< std::endl;
-		std::exit(1);
+	while (1)
+	{
+		std::cout << "Firstname : ";
+		std::getline(std::cin, FirstName);
+		if (std::cin.eof()){
+			std::cout << "\nEOF input : EXIT"<< std::endl;
+			std::exit(1);
+		}
+		else if (FirstName.length() != 0)
+			break ;
+		std::cout << "Wrong input : " << std::endl;
 	}
-	std::cout << "LastName : ";
-	std::getline(std::cin, LastName);
-	if (std::cin.eof()){
-		std::cout << "\nEOF input : EXIT"<< std::endl;
-		std::exit(1);
+	while (1)
+	{
+		std::cout << "LastName : ";
+		std::getline(std::cin, LastName);
+		if (std::cin.eof()){
+			std::cout << "\nEOF input : EXIT"<< std::endl;
+			std::exit(1);
+		}
+		else if (LastName.length() != 0)
+			break ;
+		std::cout << "Wrong input : " << std::endl;
 	}
-	std::cout << "NickName : ";
-    std::getline(std::cin, NickName);
-	if (std::cin.eof()){
-		std::cout << "\nEOF input : EXIT"<< std::endl;
-		std::exit(1);
+	while (1)
+	{
+		std::cout << "NickName : ";
+		std::getline(std::cin, NickName);
+		if (std::cin.eof()){
+			std::cout << "\nEOF input : EXIT"<< std::endl;
+			std::exit(1);
+		}
+		else if (NickName.length() != 0)
+			break ;
+		std::cout << "Wrong input : " << std::endl;
 	}
-    std::cout << "Phonenum : ";
-	std::getline(std::cin, Phonenum);
-	if (std::cin.eof()){
-		std::cout << "\nEOF input : EXIT"<< std::endl;
-		std::exit(1);
+	while (1)
+	{
+		std::cout << "Phonenum : ";
+		std::getline(std::cin, Phonenum);
+		if (std::cin.eof()){
+			std::cout << "\nEOF input : EXIT"<< std::endl;
+			std::exit(1);
+		}
+		else if (Phonenum.length() != 0)
+			break ;
+		std::cout << "Wrong input : " << std::endl;
 	}
-	std::cout << "DarkestSercret : ";
-	std::getline(std::cin, DarkestSercret);
-	if (std::cin.eof()){
-		std::cout << "\nEOF input : EXIT"<< std::endl;
-		std::exit(1);
+	while (1)
+	{
+		std::cout << "DarkestSercret : ";
+		std::getline(std::cin, DarkestSercret);
+		if (std::cin.eof()){
+			std::cout << "\nEOF input : EXIT"<< std::endl;
+			std::exit(1);
+		}
+		else if (DarkestSercret.length() != 0)
+			break ;
+		std::cout << "Wrong input : " << std::endl;
 	}
 }
 
 void	Contact::printcontact()
 {
-	unsigned long	i;
-	
-	if (FirstName.length() < 10)
-		for (i = 0; i < 10 - FirstName.length(); i++)
-			std::cout << " ";
 	Phonebookprint(FirstName);
 	std::cout << " | ";
-	if (LastName.length() < 10)
-		for (i = 0; i < 10 - LastName.length(); i++)
-			std::cout << " ";
 	Phonebookprint(LastName);
    	std::cout << " | ";
-	if (NickName.length() < 10)
-		for (i = 0; i < 10 - NickName.length(); i++)
-			std::cout << " ";
-    Phonebookprint(NickName);
+	Phonebookprint(NickName);
     std::cout << std::endl;
 }
 
@@ -73,14 +92,12 @@ void Contact::allprint(void){
 
 void	Phonebookprint(std::string str)
 {
-	int	i;
+	std::string str2;
 
-	i = 0;
-	while (i < 9 && str[i])
-	{
-		std::cout << str[i];
-		i++;
+	if (str.length() < 10)
+		std::cout << std::setw(10) << std::setfill(' ') << str;
+	else {
+		str2 = str.substr(0, 9);
+		std::cout << str2 << ".";
 	}
-	if (str[i])
-		std::cout << ".";
 }

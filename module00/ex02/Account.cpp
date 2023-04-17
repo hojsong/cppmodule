@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hojsong <hojsong@student.42seoul.k>        +#+  +:+       +#+        */
+/*   By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 15:22:12 by hojsong           #+#    #+#             */
-/*   Updated: 2023/03/03 15:22:14 by hojsong          ###   ########.fr       */
+/*   Updated: 2023/04/17 15:55:06 by hojsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	Account::makeDeposit(int deposit)
 	 std::cout<< "deposit:" << deposit <<";";
 	 _amount += deposit;
 	 _nbDeposits = 1;
+	 std::cout<< "amount:" << _amount <<";";
 	 std::cout<< "nb_deposits:" << _nbDeposits << std::endl;
 	 _totalNbDeposits++;
 	 _totalAmount += deposit;
@@ -101,11 +102,11 @@ void	Account::displayAccountsInfos()
 
 	_displayTimestamp();
 	dest = getNbAccounts();
-	std::cout<< "accounts" << dest <<";";
+	std::cout<< "accounts:" << dest <<";";
 	dest = getTotalAmount();
  	std::cout<< "total:" << dest <<";";
  	dest = getNbDeposits();
- 	std::cout<< "desposits:"<< dest<<";";
+ 	std::cout<< "deposits:"<< dest<<";";
  	dest = getNbWithdrawals();
  	std::cout<< "withdrawals:"<< dest <<std::endl;
 }
@@ -115,7 +116,7 @@ void	Account::displayStatus() const
 	_displayTimestamp();
     std::cout<< "index:" << _accountIndex <<";";
     std::cout<< "amount:" << _amount <<";";
-    std::cout<< "desposits:"<< _nbDeposits<<";";
+    std::cout<< "deposits:"<< _nbDeposits<<";";
     std::cout<< "withdrawals:" << _nbWithdrawals << std::endl;
 }
 
