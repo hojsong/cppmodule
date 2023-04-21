@@ -30,13 +30,17 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &claptrap){
 }
 
 void ClapTrap::attack(const std::string& target){
-	if (this->Hit_points > 0)
+	if (this->Hit_points > 0 && this->Energy_points > 0)
 	{
 		std::cout<< "ClapTrap "<< this->Name<< " attacks "<<target<< ", "<<this->Attack_damage<<" points of damage!" << std::endl;
+		this->Energy_points--;
+	}
+	else if (this->Hit_points <= 0){
+		std::cout<< this->Name << " is Die. Can't Attack" << std::endl;
 	}
 	else
 	{
-		std::cout<< this->Name << " is Die. Can't Attack" << std::endl;
+		std::cout<< this->Name << " doesn't have Energy_points. Can't Attack" << std::endl;
 	}
 }
 

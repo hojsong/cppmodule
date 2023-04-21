@@ -29,19 +29,6 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &claptrap){
 	return *this;
 }
 
-void ScavTrap::attack(const std::string &target){
-	if (this->Hit_points == 0)
-		std::cout<< "ScavTrap "<< this->Name << " is Die. Cannot Attack." << std::endl;
-	else if (this->Energy_points == 0)
-		std::cout<< "ScavTrap "<< this->Name << " is 0 Energy. Cannot Attack" << std::endl;
-	else
-	{
-		std::cout<< "ScavTrap "<< this->Name<< " attacks " << target << ", "<< this->Attack_damage<<" points of damage!" << std::endl;
-		this->Energy_points--;
-	}
-}
-
-
 void ScavTrap::guardGate(void){
 	if (this->Hit_points == 0)
 		std::cout<< "ScavTrap "<< this->Name << " is Die. Can't Gate Guard Mode." << std::endl;
@@ -50,6 +37,18 @@ void ScavTrap::guardGate(void){
 	else
 	{
 		std::cout << "ScavTrap " << this->Name << " is Success Gate Guard Mode." << std::endl;
+		this->Energy_points--;
+	}
+}
+
+void ScavTrap::attack(const std::string &target){
+	if (this->Hit_points == 0)
+		std::cout<< "ScavTrap "<< this->Name << " is Die. Cannot Attack." << std::endl;
+	else if (this->Energy_points == 0)
+		std::cout<< "ScavTrap "<< this->Name << " is 0 Energy. Cannot Attack" << std::endl;
+	else
+	{
+		std::cout<< "ScavTrap "<< this->Name<< " attacks " << target << ", "<< this->Attack_damage<<" points of damage!" << std::endl;
 		this->Energy_points--;
 	}
 }

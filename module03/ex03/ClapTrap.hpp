@@ -14,10 +14,10 @@ class ClapTrap{
 			ClapTrap(std::string name);
 			ClapTrap(const ClapTrap &claptrap);
 			ClapTrap &operator=(const ClapTrap &claptrap);
-			void attack(const std::string& target);
+			virtual void attack(const std::string& target);
 			void takeDamage(unsigned int amount);
 			void beRepaired(unsigned int amount);
-			~ClapTrap();	
+			virtual ~ClapTrap();	
 };
 
 #endif

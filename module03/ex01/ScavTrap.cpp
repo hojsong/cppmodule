@@ -42,15 +42,17 @@ void ScavTrap::guardGate(void){
 }
 
 void ScavTrap::attack(const std::string &target){
-	if (this->Hit_points > 0)
-	{
-		std::cout<< "ScavTrap "<< this->Name<< " attacks " << target << ", "<< this->Attack_damage<<" points of damage!" << std::endl;
-	}
+	if (this->Hit_points == 0)
+		std::cout<< "ScavTrap "<< this->Name << " is Die. Cannot Attack." << std::endl;
+	else if (this->Energy_points == 0)
+		std::cout<< "ScavTrap "<< this->Name << " is 0 Energy. Cannot Attack" << std::endl;
 	else
 	{
-		std::cout<< "ScavTrap "<<  this->Name << " is Die. Can't Attack." << std::endl;
+		std::cout<< "ScavTrap "<< this->Name<< " attacks " << target << ", "<< this->Attack_damage<<" points of damage!" << std::endl;
+		this->Energy_points--;
 	}
 }
+
 
 ScavTrap::~ScavTrap(){
 	std::cout << this->Name <<" ScavTrap Destroy Constructor called" << std::endl;

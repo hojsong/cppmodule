@@ -5,7 +5,7 @@ DiamondTrap::DiamondTrap(void): name(ClapTrap::Name)
     this->Hit_points = FragTrap::Hit_points;
 	this->Attack_damage = FragTrap::Attack_damage;
     this->Energy_points = ScavTrap::Energy_points;
-	ClapTrap::Name = name + "_clap_name";
+	std::cout << ScavTrap::Energy_points << std::endl;
 	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
@@ -26,7 +26,7 @@ DiamondTrap& DiamondTrap::operator=(const DiamondTrap& obj)
 
 DiamondTrap::~DiamondTrap(void) 
 {
-	std::cout << this->Name << "DiamondTrap destructor called" << std::endl;
+	std::cout << this->Name << " DiamondTrap destructor called" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(), ScavTrap(), FragTrap()
