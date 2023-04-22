@@ -11,6 +11,11 @@ Brain::~Brain(void){
 	std::cout << "Brain DeConstructor called" << std::endl;
 }
 
+Brain::Brain(const Brain &obj){
+    std::cout << "Brain Copy Constructor called" << std::endl;
+    *this = obj;
+}
+
 Brain& Brain::operator=(Brain const &obj){
 	std::cout << "Brain Assignation operator called" << std::endl;
 	Brain *a = new Brain();

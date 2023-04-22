@@ -4,13 +4,32 @@ MateriaSource::MateriaSource(void){
     stack = 0;
 }
 
-MateriaSource::~MateriaSource(void){
-
+MateriaSource::MateriaSource(const MateriaSource &obj){
+    *this = obj;
 }
+
+MateriaSource& MateriaSource::operator=(const MateriaSource& obj){
+    for (int i = 0; i<4; i++){
+        if (this->am[i] != obj.am[i])
+            this->am[i] = obj.am[i];
+    }
+    this->stack = obj.stack;
+    return (*this);
+}
+
+MateriaSource::~MateriaSource(void){
+    std::cout << "MS destructor" << std::endl;
+    for (int i=0; i<4; i++){
+        if (am[i])
+            delete am[i];
+    }
+}
+
 void MateriaSource::learnMateria(AMateria* m){
     if (stack < 4)
     {
-        this->am[this->stack] = m;
+        this->am[this->stack] = m->clone();
+        delete m;
         stack++;
     }
     else

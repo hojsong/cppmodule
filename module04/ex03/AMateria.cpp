@@ -12,6 +12,10 @@ AMateria::~AMateria(void){
 
 }
 
+AMateria::AMateria(const AMateria & obj){
+    *this = obj;
+}
+
 AMateria& AMateria::operator=(AMateria const &obj){
     if (this->type == obj.type)
         return (*this);

@@ -3,10 +3,12 @@
 class Character : public ICharacter{
     private :
         std::string name;
-        AMateria *me[4];
+        AMateria    *me[4];
     public :
         Character(void);
         Character(std::string name);
+        Character(const Character &obj);
+        virtual Character& operator=(const Character& obj);
         virtual ~Character();
         virtual std::string const & getName() const;
         virtual void equip(AMateria* m);

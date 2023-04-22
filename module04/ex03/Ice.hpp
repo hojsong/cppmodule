@@ -9,6 +9,7 @@ class Ice : public AMateria{
     public:
         Ice(void);
         ~Ice(void);
+        Ice(const Ice &obj);
         Ice(std::string const & type);
         Ice& operator=(Ice const &obj);
         std::string const & getType() const;

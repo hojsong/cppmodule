@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CC = c++
-CXXFLAG = -Wall -Wextra -Werror -std=c++98 -g
+CXXFLAG = -Wall -Wextra -Werror -std=c++98 -g 
 NAME = Character
 HEAD = ./
 SRCS = Character.cpp MateriaSource.cpp Cure.cpp Ice.cpp main.cpp AMateria.cpp
