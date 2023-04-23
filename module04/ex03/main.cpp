@@ -19,6 +19,11 @@ int main()
 	bob->equip(tmp);
 	tmp = src->createMateria("cure");
 	bob->equip(tmp);
+	ICharacter* dest = new Character("Dest");
+	tmp = src->createMateria("ice");
+	dest->equip(tmp);
+	tmp = src->createMateria("cure");
+	dest->equip(tmp);
 	me->use(0, *bob);
 	me->use(1, *bob);
 	bob->unequip(0);
@@ -27,5 +32,6 @@ int main()
 	delete bob;
 	delete me;
 	delete src;
+	delete dest;
 	return 0;
 }
