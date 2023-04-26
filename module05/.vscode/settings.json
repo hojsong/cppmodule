@@ -66,6 +66,8 @@
 		"stack": "cpp",
 		"__functional_03": "cpp",
 		"random": "cpp",
-		"numeric": "cpp"
+		"numeric": "cpp",
+		"memory_resource": "cpp",
+		"filesystem": "cpp"
 	}
 }
