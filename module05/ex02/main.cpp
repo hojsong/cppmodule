@@ -8,9 +8,9 @@
 int main()
 {
 	Bureaucrat bureaucrat("John", 150);
-	// RobotomyRequestForm form("home");
+	RobotomyRequestForm form("home");
 	// PresidentialPardonForm form("home");
-    ShrubberyCreationForm form("home");
+    // ShrubberyCreationForm form("home");
 
     try {
         bureaucrat.executeForm(form);
