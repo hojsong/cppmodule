@@ -66,7 +66,7 @@ void		AForm::setExecuteGrade(int ExecuteGrade){
 	this->executeGrade = ExecuteGrade;
 }
 
-void		AForm::beSign(Bureaucrat &obj){
+void		AForm::beSign(Bureaucrat const &obj){
 	if (this->getSign()){
 		std::cout << obj.getName() << " can't sign " << this->getName() << " bacause";
 		throw AForm::AFormSignedAlreadyException();

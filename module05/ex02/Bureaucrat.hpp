@@ -20,8 +20,8 @@ class Bureaucrat{
 		Bureaucrat& operator=(Bureaucrat const &obj);
 		void setName(std::string name);
 		void setGrade(int grade);
-		std::string getName(void);
-		int getGrade(void);
+		std::string getName(void) const;
+		int getGrade(void) const;
 		void incrementGrade();
 		void decrementGrade();
 		class NullPointException : public std::exception
@@ -39,7 +39,8 @@ class Bureaucrat{
 			public:
 				GradeTooLowException();
 		};
-		void signAForm(AForm &AForm);
+		void signForm(AForm &AForm);
+		void executeForm(AForm const &form);
 };
 
 std::ostream		&operator<<(std::ostream &out, Bureaucrat &bureaucrat);

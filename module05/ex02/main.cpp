@@ -1,25 +1,36 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+
 
 int main()
 {
-	try
-	{
-		Bureaucrat c;
-		c = Bureaucrat("Amenkhotep", 150);
-		Bureaucrat d;
-		d = Bureaucrat("Antiokhey", 1);
-		std::cout << c << d;
-		c.incrementGrade();
-		d.decrementGrade();
-		std::cout << c << d;
-		AForm fa = AForm("avans", 3, 1);
-		std::cout << fa;
-		d.signAForm(fa);
-		d.signAForm(fa);
-		std::cout << fa;
-	}
-	catch (std::exception& e)
-	{}
-	return 0;
+	Bureaucrat bureaucrat("John", 150);
+	// RobotomyRequestForm form("home");
+	// PresidentialPardonForm form("home");
+    ShrubberyCreationForm form("home");
+
+    try {
+        bureaucrat.executeForm(form);
+    } catch (const std::exception &e) {
+        std::cout << "Exception caught: " << e.what() << std::endl;
+    }
+
+    try {
+        bureaucrat.signForm(form);
+        bureaucrat.setGrade(149);
+        bureaucrat.executeForm(form);
+    } catch (const std::exception &e) {
+    }
+
+    try {
+        bureaucrat.setGrade(1);
+		bureaucrat.signForm(form);
+        bureaucrat.executeForm(form);
+    } catch (const std::exception &e) {
+    }
+
+    return 0;
 }

@@ -27,7 +27,7 @@ class AForm{
 		void		setName(std::string name);
 		void		setSignGrade(int SignGrade);
 		void		setExecuteGrade(int ExecuteGrade);
-		void		beSign(Bureaucrat &obj);
+		void		beSign(Bureaucrat const &obj);
 		virtual void	execute(Bureaucrat const & executor) const = 0;
 		class GradeTooLowException : public std::exception{
 			public:
