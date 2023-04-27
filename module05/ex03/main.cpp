@@ -3,14 +3,20 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 
 int main()
 {
+    Intern intern;
+    AForm *form;
 	Bureaucrat bureaucrat("John", 150);
-	AForm *form = new RobotomyRequestForm("home");
-	//AForm *form = new PresidentialPardonForm("home");
-    //AForm *form = new ShrubberyCreationForm("home");
+
+    std::string type;
+	type = "robotomy request";
+	// type = "presidential pardon";
+    // type =  "shrubbery creation";
+    form = &intern.makeForm(type, "home");
 	std::cout << "---------- 1 TRY -------------" << std::endl;
     try {
         bureaucrat.executeForm(*form);
