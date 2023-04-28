@@ -1,7 +1,9 @@
 #ifndef SCALARCONVERT_HPP
 #define SCALARCONVERT_HPP
+
 #include <iostream>
 #include <string.h>
+#include <sstream>
 #include <cmath>
 #include <limits.h>
 
@@ -11,7 +13,7 @@ class ScalarConvert
 		std::string value;
 		int			i;
 		float		f;
-		char		c;
+		int			c;
 		double		d;
 	public:
 		ScalarConvert(void);
@@ -19,12 +21,13 @@ class ScalarConvert
 	    ScalarConvert(const ScalarConvert& obj);
 	    virtual ScalarConvert& operator=(const ScalarConvert& obj);
 		virtual ~ScalarConvert();
-		void		setValue(std::string val)const;
+		void		setValue(std::string val);
 		std::string	getValue(void) const;
-		int			getInt(void) const;
-		float		getFloat(void) const;
-		char		getChar(void) const;
-        double	  	getDouble(void) const;
+		void		getInt(void) ;
+		void		getFloat(void) ;
+		void		getChar(void) ;
+        void	  	getDouble(void) ;
+		void		convert(std::string str);
 		class CannotPrintChar : public std::exception
 		{
 			public:
@@ -37,4 +40,4 @@ class ScalarConvert
 		};
 };
 
-endif
+#endif

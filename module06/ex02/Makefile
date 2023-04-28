@@ -6,13 +6,13 @@
 #    By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:59:17 by hojsong           #+#    #+#              #
-#    Updated: 2023/04/28 17:19:29 by hojsong          ###   ########.fr        #
+#    Updated: 2023/04/28 19:46:28 by hojsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
-NAME = convert
-SRCS = main.cpp ScalarConvert.cpp
+NAME = RandomBase
+SRCS = main.cpp A.cpp B.cpp C.cpp Base.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
