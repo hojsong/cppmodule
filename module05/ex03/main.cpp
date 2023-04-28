@@ -13,9 +13,9 @@ int main()
 	Bureaucrat bureaucrat("John", 150);
 
     std::string type;
-	type = "robotomy request";
+	// type = "robotomy request";
 	// type = "presidential pardon";
-    // type =  "shrubbery creation";
+    type =  "shrubbery creation";
     form = &intern.makeForm(type, "home");
 	std::cout << "---------- 1 TRY -------------" << std::endl;
     try {

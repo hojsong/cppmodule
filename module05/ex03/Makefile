@@ -6,12 +6,12 @@
 #    By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:59:17 by hojsong           #+#    #+#              #
-#    Updated: 2023/04/26 19:33:33 by hojsong          ###   ########.fr        #
+#    Updated: 2023/04/28 15:15:51 by hojsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
-NAME = AForm
+NAME = Intern
 SRCS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp\
 		RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 OBJS = $(SRCS:.cpp=.o)

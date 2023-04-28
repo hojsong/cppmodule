@@ -23,21 +23,25 @@ Intern::~Intern(){
 
 // 이건 학원가서 바꿀것.
 AForm& Intern::makeForm(std::string type ,std::string target){
-    AForm *result;
+    AForm *result[3];
     int   i;
-    void  (AForm::*f) = {&PresidentialPardonForm::PresidentialPardonForm(),
-               &RobotomyRequestForm::RobotomyRequestForm(), 
-               &ShrubberyCreationForm::ShrubberyCreationForm()};
+    result[0] = new PresidentialPardonForm(target);
+    result[1] = new RobotomyRequestForm(target);
+    result[2] = new ShrubberyCreationForm(target);
     std::string str[3] = {
         "presidential pardon", "robotomy request" ,"shrubbery creation"
     };
     for (i = 0; i < 3; i++){
         if (str[i] == type)
             break;
+        else
+            delete result[i];
     }
     if (i == 3)
-        result = NULL;
-    else
-        result = new f[i](target);
-    return (result);
+        throw Intern::NotFindType();
+    return (*result[i]);
+}
+
+Intern::NotFindType::NotFindType(){
+    std::cout << "Not Found Type" <<std::endl;
 }

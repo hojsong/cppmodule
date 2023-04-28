@@ -14,6 +14,11 @@ class Intern{
 		Intern& operator=(const Intern& src);
 		virtual ~Intern();
 		AForm& makeForm(std::string type ,std::string target);
+		class NotFindType : public std::exception
+		{
+			public:
+				NotFindType();
+		};
 };
 
 #endif
