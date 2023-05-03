@@ -69,7 +69,10 @@
 		"clocale": "cpp",
 		"numeric": "cpp",
 		"random": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"filesystem": "cpp",
+		"__memory": "cpp",
+		"list": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }
