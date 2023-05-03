@@ -5,17 +5,17 @@
 #include <string>
 
 template <typename T>
-void print_fl(T &str){
-    std::cout << *str << std::endl;
+void print_fl(T str){
+    std::cout << str << std::endl;
 }
 
 template <typename T>
-void print_f(T &str){
-    std::cout << *str << " ";
+void print_f(T str){
+    std::cout << str << " ";
 }
 
 template <typename T>
-void iter(T &x, int len, void (*fn)(T&)){
+void iter(T *x, int len, void (*fn)(T&)){
     for (int i = 0; i < len; i++)
         fn(x[i]);
 }
