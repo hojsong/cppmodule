@@ -6,13 +6,13 @@
 #    By: hojsong <hojsong@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/18 15:59:17 by hojsong           #+#    #+#              #
-#    Updated: 2023/05/08 22:19:48 by hojsong          ###   ########.fr        #
+#    Updated: 2023/05/09 07:53:25 by hojsong          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
-NAME = Mutant
-SRCS = main.cpp
+NAME = btc
+SRCS = main.cpp BitcoinExchange.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all : $(NAME)
