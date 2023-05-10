@@ -41,6 +41,7 @@ void	PmergeMe::initPmerge(int argc, char **argv){
 	cstr = new char[str.length() + 1];
     std::strcpy(cstr, str.c_str());
     token = std::strtok(cstr, " ");
+	this->start_time = clock();
     while (token != NULL) {
 		is_int = true;
 		for (i=0; i<std::strlen(token); i++)
@@ -68,7 +69,6 @@ void	PmergeMe::executePmerge(void){
 	std::vector<unsigned int> dest2;
 	size_t i = 0;
 
-	this->start_time = clock();
 	while (i < p_ui_s.size()/2){
 		dest1.push_back(p_ui_s[i]);
 		i++;

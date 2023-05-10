@@ -51,6 +51,8 @@ void	RPN::execve(char str){
 		p = b - a;
 	else if (str == '+')
 		p = b + a;
+	else if (str == '/' && a == 0)
+		throw std::out_of_range("Error: not divisible by 0");
 	else if (str == '/')
 		p = b / a;
 	else
