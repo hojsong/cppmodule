@@ -21,14 +21,14 @@ void RPN::resultinit(char *str){
 	size_t i;
 	int save;
 	for (i=0; str[i] != '\0'; i++){
-		if (str[i] >= '0' && str[i] <= '9')
+		if (str[i] == ' ')
+			;
+		else if (str[i] >= '0' && str[i] <= '9')
 			result.push_back(str[i] - '0');
 		else if (str[i] == '-' || str[i] == '+'  || str[i] == '/' || str[i] == '*')
 			execve(str[i]);
-		else if (str[i] != ' ')
-			throw std::out_of_range("Error");
-		if (str[i] != ' ' && (str[i + 1] && str[i + 1] != ' '))
-			throw std::out_of_range("Error");
+		else
+			throw std::out_of_range("Error: is not \'- + = /\' or number");
 	}
 	save = result.back();
 	result.pop_back();
@@ -43,6 +43,8 @@ void	RPN::execve(char str){
 	int	b;
 	int p;
 
+	if (result.size() <= 1)
+		throw std::out_of_range("Error: number does not match");
 	a = result.back();
 	result.pop_back();
 	b = result.back();

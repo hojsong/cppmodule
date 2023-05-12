@@ -18,46 +18,89 @@ BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange const &obj){
 	return *this;
 }
 
+char* my_exception(const std::string& str) {
+    char* msg = new char[str.size() + 1];
+    std::strcpy(msg, str.c_str());
+    return msg;
+}
+
+bool hj_strcomparison(std::string str, std::string str2){
+	std::string substr11 = str.substr(0, 4);
+    std::string substr12 = str.substr(5, 2);
+    std::string substr13 = str.substr(8, 2);
+	std::string substr21 = str2.substr(0, 4);
+    std::string substr22 = str2.substr(5, 2);
+    std::string substr23 = str2.substr(8, 2);
+	int	idx = 0;
+	for (int i = 0; i < 4; i++){
+		if (substr11[i] > substr21[i] && idx == i)
+			return false;
+		if (substr11[i] == substr21[i])
+			idx++;
+	}
+	for (int i = 0; i < 2; i++){
+		if (substr12[i] > substr22[i] && idx == i+4)
+			return false;
+		if (substr12[i] == substr22[i])
+			idx++;
+	}
+	for (int i = 0; i < 2; i++){
+		if (substr13[i] > substr23[i] && idx == i+6)
+			return false;
+		if (substr13[i] == substr23[i])
+			idx++;
+	}
+	return true;
+}
 
 int BitcoinExchange::setFile(FILE *fd){
-	std::string dest;
-	std::string dust;
 	char buffer[1024];
 	char* token;
+	std::string first_str = "";
+	std::string second_str = "";
 	std::fgets(buffer, 1024, fd);
-	token = std::strtok(buffer, "| \n"); 
+	token = strstr(buffer, " | ");
 	if (token != NULL) {
-			dest = token;
-			if (dest == "date")
-				token = std::strtok(NULL, "| \n");
-			else
-				return 1;
-			if (token != NULL)
-				dest = token;
-			else
-				dest = "";
-			if (dest == "value")
-				token = std::strtok(NULL, "| \n");
-			else
-				return (1);
+	   	*token = '\0';
+	   	first_str = buffer;
+	   	second_str = token + strlen(" | ");
+		if (first_str != "date" || second_str != "value\n"){
+			throw my_exception("Error: first format is not \'date | value\'");
+		}
 	}
-	else {
-		return (1);
+	else{
+		throw my_exception("Error: first format is not \'date | value\'");
 	}
-    while (std::fgets(buffer, 1024, fd)) {
-        token = std::strtok(buffer, "| \n");
-    	while (token != NULL) {
-			dest = token;
-			input.day.push(dest);
-	        token = std::strtok(NULL, "| \n");
+	while (std::fgets(buffer, 1024, fd)){
+		token = strstr(buffer, " | ");
+		if (token != NULL) {
+	    	*token = '\0';
+	    	first_str = buffer;
+	    	second_str = token + strlen(" | ");
+			second_str[second_str.length() - 1] = '\0';
+		}
+		else{
+			token = strstr(buffer, " ");
 			if (token != NULL)
-				dest = token;
-			else
-				dest = "";
-			input.value.push(dest);
-			token = std::strtok(NULL, "| \n");
-    	}
-    }
+			{
+	    		*token = '\0';
+				first_str = buffer;
+	    		second_str = token + strlen(" ");
+				if(first_str.length() != 10)
+					throw std::out_of_range("Error: day is NULL");
+				second_str = "";
+			}
+			else {
+				first_str = buffer;
+				second_str = "";
+			}
+			first_str[10] = '\0';
+		}
+		if (first_str[first_str.length() - 1] == '\n')
+			first_str[first_str.length() - 1] = '\0';
+		input.day.push(first_str);
+		input.value.push(second_str);
+	}
 	return (0);
 }
 
@@ -103,49 +146,25 @@ int BitcoinExchange::setFile2(FILE *fd){
 	return (0);
 }
 
-bool hj_strcomparison(std::string str, std::string str2){
-	std::string substr11 = str.substr(0, 4);
-    std::string substr12 = str.substr(5, 2);
-    std::string substr13 = str.substr(8, 2);
-	std::string substr21 = str2.substr(0, 4);
-    std::string substr22 = str2.substr(5, 2);
-    std::string substr23 = str2.substr(8, 2);
-	int	idx = 0;
-	for (int i = 0; i < 4; i++){
-		if (substr11[i] > substr21[i] && idx == i)
-			return false;
-		if (substr11[i] == substr21[i])
-			idx++;
-	}
-	for (int i = 0; i < 2; i++){
-		if (substr12[i] > substr22[i] && idx == i+4)
-			return false;
-		if (substr12[i] == substr22[i])
-			idx++;
-	}
-	for (int i = 0; i < 2; i++){
-		if (substr13[i] > substr23[i] && idx == i+6)
-			return false;
-		if (substr13[i] == substr23[i])
-			idx++;
-	}
-	return true;
-}
-
 std::string BitcoinExchange::easyfind(std::stack<std::string> con, std::stack<std::string> val, std::string value)
 {
     std::stack<std::string> temp_con = con;
     std::stack<std::string> temp_val = val;
+	std::string	back = "0";
 	while (!temp_con.empty()) {
         if (temp_con.top() == value) {
             break ;
         }
 		else if (hj_strcomparison(temp_con.top(), value))
-			break ;
+			return back;
+		back = temp_val.top();
         temp_con.pop();
         temp_val.pop();
     }
-	return temp_val.top();
+	if (!temp_con.empty())
+		return temp_val.top();
+	else
+		return back;
 }
 
 int hj_day_true(std::string str){
@@ -194,14 +213,41 @@ int hj_day_true(std::string str){
 std::string hj_multiplication(std::string val1, std::string val2){
 	float f1 = static_cast<float>(atof(val1.c_str()));
 	float f2 = static_cast<float>(atof(val2.c_str()));
+	std::string result_str;
 
-	std::string result_str = std::to_string(f1 * f2);
-	size_t last_non_zero = result_str.find_last_not_of('0');
-	if(last_non_zero != std::string::npos){
-		result_str = result_str.substr(0, last_non_zero + 1);
+	if (f1 * f2 == 0)
+		result_str = "0";
+	else{
+		result_str = std::to_string(f1 * f2);
+		size_t last_non_zero = result_str.find_last_not_of('0');
+		if(last_non_zero != std::string::npos){
+			result_str = result_str.substr(0, last_non_zero + 1);
+		}
 	}
-	
 	return result_str;
+}
+
+bool is_not_day(std::string str){
+	int i;
+	for(i = 0; i<4; i++){
+		if (std::isdigit(str[i]) == false)
+			return false;
+	}
+	if (str[4] != '-')
+		return false;
+	for(i = 5; i < 7; i++){
+		if (std::isdigit(str[i]) == false)
+			return false;
+	}
+	if (str[7] != '-')
+		return false;
+	for(i = 8; i<10; i++){
+		if (std::isdigit(str[i]) == false)
+			return false;
+	}
+	if (str[10] != '\0')
+		return false;
+	return true;
 }
 
 std::string BitcoinExchange::easyprint(std::stack<std::string> con, std::stack<std::string> val, std::stack<std::string> con2, std::stack<std::string> val2)
@@ -215,7 +261,13 @@ std::string BitcoinExchange::easyprint(std::stack<std::string> con, std::stack<s
 		num = std::atol(val.top().c_str());
 		if (con.top().length() != 10)
 			save_string = "Error: bad input => " + con.top();
+		else if (is_not_day(con.top()) == false)
+			save_string = "Error: bad input => " + con.top();
 		else if (hj_day_true(con.top()) == 1)
+			save_string = "Error: bad input => " + con.top();
+		else if (hj_strcomparison(con.top(), "2009-01-01") == true)
+			save_string = "Error: bad input => " + con.top();
+		else if (val.top().length() == 0)
 			save_string = "Error: bad input => " + con.top();
 		else if (num < 0)
 			save_string = "Error: not a positive number.";

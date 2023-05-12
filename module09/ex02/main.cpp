@@ -8,9 +8,7 @@ int main(int argc, char **argv){
 	PmergeMe myMerge;
 	
 	try { 
-		myMerge.initPmerge(argc, argv);
-		myMerge.executePmerge();
-		myMerge.executePrint();
+		myMerge.execute(argc, argv);
 	}
 	catch(const std::exception& e)
 	{
