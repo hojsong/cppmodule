@@ -15,6 +15,19 @@ void identify(Base* p) {
     }
 }
 
+
+void identify(Base& p) {
+    if (dynamic_cast<A*>(&p) != nullptr) {
+        std::cout << "Object is of type A" << std::endl;
+    } else if (dynamic_cast<B*>(&p) != nullptr) {
+        std::cout << "Object is of type B" << std::endl;
+    } else if (dynamic_cast<C*>(&p) != nullptr) {
+        std::cout << "Object is of type C" << std::endl;
+    } else {
+        std::cout << "Unknown object type" << std::endl;
+    }
+}
+
 Base* generate(void){
 	Base *base;
 	std::srand(std::time(0));
@@ -31,10 +44,16 @@ Base* generate(void){
 
 int main(){
 	Base *random;
+	A a;
+	B b;
+	C c;
 
 	random = generate();
 	identify(random);
 	identify(NULL);
+	identify(a);
+	identify(b);
+	identify(c);
 	delete random;
 	return (0);
 }

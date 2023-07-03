@@ -8,11 +8,12 @@
 #include "Data.hpp"
 
 class Serializer {
-	public:
+	private:
 		Serializer();
 		virtual ~Serializer();
 		Serializer(Serializer const &obj);
 		virtual Serializer& operator= (Serializer const& obj);
+	public:
     	static uintptr_t serialize(Data* ptr);
 	    static Data* deserialize(uintptr_t raw);
 };

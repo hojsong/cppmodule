@@ -9,35 +9,17 @@
 
 class ScalarConvert
 {
-	private:
-		std::string value;
-		int			i;
-		float		f;
-		int			c;
-		double		d;
+	private :
+		ScalarConvert();
+		~ScalarConvert();
+		ScalarConvert(ScalarConvert const &obj);
+		ScalarConvert& operator= (ScalarConvert const& obj);
 	public:
-		ScalarConvert(void);
-		ScalarConvert(std::string value);
-	    ScalarConvert(const ScalarConvert& obj);
-	    virtual ScalarConvert& operator=(const ScalarConvert& obj);
-		virtual ~ScalarConvert();
-		void		setValue(std::string val);
-		std::string	getValue(void) const;
-		void		getInt(void) ;
-		void		getFloat(void) ;
-		void		getChar(void) ;
-        void	  	getDouble(void) ;
-		void		convert(std::string str);
-		class CannotPrintChar : public std::exception
-		{
-			public:
-				CannotPrintChar();
-		};
-		class ConvertFail : public std::exception
-		{
-			public:
-				ConvertFail();
-		};
+		static void		printInt(std::string str) ;
+		static void		printFloat(std::string str) ;
+		static void		printChar(std::string str) ;
+        static void	  	printDouble(std::string str) ;
+		static void		convert(std::string str);
 };
 
 #endif
