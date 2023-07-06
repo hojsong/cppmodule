@@ -15,7 +15,7 @@ void f(){
 int main()
 {
     int max_val = 750;
-    atexit(f);
+    // atexit(f);
     Array<int> numbers(max_val);
     Array<Aclass> Ac(max_val);
     int* mirror = new int[max_val];
@@ -42,6 +42,13 @@ int main()
         if (Ac[i].a != Bc[i].a || Ac[i].a != Cc[i].a || Bc[i].a != Cc[i].a)
         {
             std::cerr << i + 1 << " : " << Ac[i].a << ", " << Bc[i].a << ", " << Cc[i].a << std::endl;
+            std::cerr << "didn't save the same value!!" << std::endl;
+            delete [] mirror;
+            return 1;
+        }
+        if (Ac[i].c != Bc[i].c || Ac[i].c != Cc[i].c || Bc[i].c != Cc[i].c)
+        {
+            std::cerr << i + 1 << " : " << Ac[i].c << ", " << Bc[i].c << ", " << Cc[i].c << std::endl;
             std::cerr << "didn't save the same value!!" << std::endl;
             delete [] mirror;
             return 1;
