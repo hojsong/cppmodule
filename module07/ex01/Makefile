@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
-NAME = ExamTamplate
+NAME = ExamIter
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
