@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
-NAME = EasyFind
+NAME = Span
 SRCS = main.cpp Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 

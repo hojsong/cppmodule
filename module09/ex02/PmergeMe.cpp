@@ -59,7 +59,7 @@ void	PmergeMe::initPmerge(int argc, char **argv){
 		}
 		else{
 			std::ostringstream oss;
-			oss << "Error: is not digit or negative int";
+			oss << "Error: is \'not digit\' or \'negative int\'";
 			delete[] cstr;
 			throw std::out_of_range(oss.str());
 		}
@@ -89,21 +89,13 @@ void	PmergeMe::executePmerge(void){
 		while (y > 0){
 			if (dest1[y] >= dest1[y - 1] && dest2[y] >= dest2[y - 1])
 				break ;
-			if (y < dest1.size() && y < dest2.size()){
-				if (dest1[y - 1] > dest1[y]){
-					std::swap(dest1[y - 1],dest1[y]);
-				}
-				if (dest2[y - 1] > dest2[y]){
-					std::swap(dest2[y - 1],dest2[y]);
-				}
-			}
-			else if (y > dest2.size()){
+			if (y < dest1.size()){
 				if (dest1[y - 1] > dest1[y])
 				{
 					std::swap(dest1[y - 1],dest1[y]);
 				}
 			}
-			else if (y > dest1.size()){
+			if (y < dest2.size()){
 				if (dest2[y - 1] > dest2[y])
 				{
 					std::swap(dest2[y - 1],dest2[y]);
@@ -116,26 +108,22 @@ void	PmergeMe::executePmerge(void){
 	x = 0;
 	y = 0;
 	while (x < dest1.size() && y < dest2.size()){
-		if (y < dest2.size() && dest1[x] >= dest2[y]){
+		if (dest1[x] >= dest2[y]){
 			p_ui_e.push_back(dest2[y]);
 			y++;
 		}
-		else if (x < dest1.size() && dest1[x] < dest2[y]){
+		else if (dest1[x] < dest2[y]){
 			p_ui_e.push_back(dest1[x]);
 			x++;
 		}
 	}
-	if (y >= dest2.size()){
-		while (x < dest1.size()){
-			p_ui_e.push_back(dest1[x]);
-			x++;
-		}
+	while (x < dest1.size()){
+		p_ui_e.push_back(dest1[x]);
+		x++;
 	}
-	else {
-		while (y < dest2.size()){
-			p_ui_e.push_back(dest2[y]);
-			y++;
-		}
+	while (y < dest2.size()){
+		p_ui_e.push_back(dest2[y]);
+		y++;
 	}
 	this->end_time_v = clock();
 }
@@ -196,21 +184,13 @@ void	PmergeMe::executeQmerge(void){
 		while (y > 0){
 			if (dest1[y] >= dest1[y - 1] && dest2[y] >= dest2[y - 1])
 				break ;
-			if (y < dest1.size() && y < dest2.size()){
-				if (dest1[y - 1] > dest1[y]){
-					std::swap(dest1[y - 1],dest1[y]);
-				}
-				if (dest2[y - 1] > dest2[y]){
-					std::swap(dest2[y - 1],dest2[y]);
-				}
-			}
-			else if (y > dest2.size()){
+			if (y < dest1.size()){
 				if (dest1[y - 1] > dest1[y])
 				{
 					std::swap(dest1[y - 1],dest1[y]);
 				}
 			}
-			else if (y > dest1.size()){
+			if (y < dest2.size()){
 				if (dest2[y - 1] > dest2[y])
 				{
 					std::swap(dest2[y - 1],dest2[y]);
@@ -223,26 +203,22 @@ void	PmergeMe::executeQmerge(void){
 	x = 0;
 	y = 0;
 	while (x < dest1.size() && y < dest2.size()){
-		if (y < dest2.size() && dest1[x] >= dest2[y]){
+		if (dest1[x] >= dest2[y]){
 			q_ui_e.push_back(dest2[y]);
 			y++;
 		}
-		else if (x < dest1.size() && dest1[x] < dest2[y]){
+		else if (dest1[x] < dest2[y]){
 			q_ui_e.push_back(dest1[x]);
 			x++;
 		}
 	}
-	if (y >= dest2.size()){
-		while (x < dest1.size()){
+	while (x < dest1.size()){
 			q_ui_e.push_back(dest1[x]);
 			x++;
-		}
 	}
-	else {
-		while (y < dest2.size()){
-			q_ui_e.push_back(dest2[y]);
-			y++;
-		}
+	while (y < dest2.size()){
+		q_ui_e.push_back(dest2[y]);
+		y++;
 	}
 	this->end_time_q = clock();
 }

@@ -10,7 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# 2009-01-02 이전날짜 시 수정 , "2010-11-16   3" input이 이렇게 되는것도 수정
 CXXFLAG = -Wall -Wextra -Werror -std=c++98
 NAME = btc
 SRCS = main.cpp BitcoinExchange.cpp
